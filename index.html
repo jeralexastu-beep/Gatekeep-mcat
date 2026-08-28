@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCAT Gatekeeper Tracker</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+        }
+        h1 { font-size: 24px; color: #1d1d1f; margin-bottom: 5px; }
+        p { color: #86868b; margin-top: 0; }
+        .counter { font-size: 48px; font-weight: bold; color: #0071e3; margin: 20px 0; }
+        button {
+            background-color: #0071e3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .insta-btn {
+            background-color: #e1306c;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            padding: 12px 0;
+            font-size: 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h1>MCAT Gatekeeper</h1>
+    <p>Do a question before scrolling!</p>
+    
+    <div class="counter" id="count">0</div>
+    
+    <button onclick="addQuestion()">+ Log MCAT Question</button>
+    <!-- Deep link to open Instagram native app -->
+    <a href="instagram://app" class="insta-btn" onclick="resetToday()">Unlock Instagram</a>
+</div>
+
+<script>
+    // Simple tracking logic using browser storage
+    let count = localStorage.getItem('mcat_count') || 0;
+    document.getElementById('count').innerText = count;
+
+    function addQuestion() {
+        count++;
+        localStorage.setItem('mcat_count', count);
+        document.getElementById('count').innerText = count;
+    }
+
+    function resetToday() {
+        // Keeps the count but lets you pass through to Instagram
+        console.log("Redirecting to Instagram...");
+    }
+</script>
+
+</body>
+</html>
